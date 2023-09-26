@@ -8,6 +8,7 @@ import NotFound from '../NotFound';
 import SignIn from '../SignIn';
 import Navbar from '../../Components/Navbar';
 import './App.css'
+import Layout from '../../Components/Layout';
 
 const AppRoutes = () : ReactElement | null => {
   let routes = useRoutes([
@@ -25,8 +26,10 @@ const App = () : ReactElement => {
 
   return (
     <BrowserRouter>
-      <AppRoutes />
       <Navbar />
+      <Layout>
+        <AppRoutes />
+      </Layout>
     </BrowserRouter>
   )
  

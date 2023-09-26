@@ -1,6 +1,10 @@
+import Layout from "../../Components/Layout";
+
 function MyAccount() {
   return (
-    <p>MyAccount</p>
+    <Layout >
+      <p>MyAccount</p>
+    </Layout>
   )
 }
 

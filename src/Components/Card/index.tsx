@@ -1,6 +1,17 @@
-import { ReactElement } from "react";
+import { ReactElement, useState, useEffect } from "react";
 
 const Card = (): ReactElement =>{
+  const [items, setItems] = useState<[] | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch('https://api.escuelajs.co/api/v1/products');
+      const data = await res.json();
+      console.log(data)
+      setItems(data);
+    };
+    fetchData();
+  }, []);
   return (
     <div className='bg-white cursort-pointer w-56 h-60 rounded-lg'>
       <figure className='relative mb-2 w-full h-4/5'>

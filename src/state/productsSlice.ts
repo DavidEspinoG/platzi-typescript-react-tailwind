@@ -2,28 +2,28 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { apiUrls } from "../constants";
-import { State } from "../types";
+
 
 const fetchProducts = createAsyncThunk(
   'products/fetch-products', async(_, {rejectWithValue}) => {
     try {
       const response = await axios.get(apiUrls.getProducts);
       return response.data;
-    } catch (err){
-      return rejectWithValue(err)
+    } catch (err : any){
+      if (!err.response) {
+        throw err
+      }
+      return rejectWithValue(err.response.data)
     }
   }
 );
-
-type Action = {
-  payload : []
-};
 
 const productsSlice = createSlice({
   name: 'products',
   initialState: {
     loading: false,
     products: [],
+    message: ''
   },
   reducers: {}, 
   extraReducers: (builder) => {
@@ -35,10 +35,8 @@ const productsSlice = createSlice({
     .addCase(fetchProducts.pending, (state) => {
       state.loading = true;
     })
-    .addCase(fetchProducts.rejected, (state, action) => {
+    .addCase(fetchProducts.rejected, (state) => {
       state.loading = false; 
-      // @ts-ignore
-      state.products = action.payload;
     })
   },
 });

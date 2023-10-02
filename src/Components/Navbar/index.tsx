@@ -1,7 +1,9 @@
 import { ReactElement } from "react";
 import { NavLink } from "react-router-dom";
+import { useAppSelector } from "../../state/store";
 
 const Navbar = (): ReactElement => {
+  const counter = useAppSelector((state) => state.counter);
   const activeStyle: string = 'underline underline-offset-4'
   const conditionalStyle = ({isActive}:{isActive: boolean}) => isActive ? activeStyle : undefined
   return (
@@ -70,7 +72,7 @@ const Navbar = (): ReactElement => {
           </NavLink>
         </li>
         <li>
-          🛒
+          🛒 {counter}
         </li>
       </ul>
     </nav>

@@ -23,9 +23,14 @@ const productsSlice = createSlice({
   initialState: {
     loading: false,
     products: [],
-    message: ''
+    message: '',
+    counter: 0,
   },
-  reducers: {}, 
+  reducers: {
+    incrementCounter: (state) => {
+      state.counter = state.counter + 1;
+    },
+  }, 
   extraReducers: (builder) => {
     builder
     .addCase(fetchProducts.fulfilled,(state, action) => {
@@ -43,3 +48,4 @@ const productsSlice = createSlice({
 
 export default productsSlice;
 export { fetchProducts };
+export const { incrementCounter } = productsSlice.actions;

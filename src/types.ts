@@ -20,7 +20,11 @@ export type Product = {
   category: Category
 }
 
-export type State = {
-  products: [], 
+export type InitialStateType = {
   loading: boolean, 
-};
+  products: any[],
+  counter: number, 
+  isProductDetailOpen: boolean, 
+  productToShow: Product, 
+  cart: Product[],
+}

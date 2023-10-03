@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { apiUrls } from "../constants";
-
+import { InitialStateType } from "../types";
 
 const fetchProducts = createAsyncThunk(
   'products/fetch-products', async(_, {rejectWithValue}) => {
@@ -18,15 +18,33 @@ const fetchProducts = createAsyncThunk(
   }
 );
 
+const initialState : InitialStateType =  {
+  loading: false,
+  products: [],
+  counter: 0,
+  isProductDetailOpen: false, 
+  productToShow: {
+    id: 0, 
+    title: '', 
+    price: 0, 
+    description: '', 
+    images: [], 
+    creationAt: '', 
+    updatedAt: '', 
+    category: {
+      id: 0, 
+      name: '', 
+      image: '', 
+      creationAt: '', 
+      updatedAt: '', 
+    }, 
+  },
+  cart: [],
+}
+
 const productsSlice = createSlice({
   name: 'products',
-  initialState: {
-    loading: false,
-    products: [],
-    message: '',
-    counter: 0,
-    isProductDetailOpen: false, 
-  },
+  initialState,
   reducers: {
     incrementCounter: (state) => {
       state.counter = state.counter + 1;
@@ -37,6 +55,13 @@ const productsSlice = createSlice({
     showProductDetail: (state) => {
       state.isProductDetailOpen = true;
     },
+    updateProductToShow: (state, action) => {
+      state.productToShow = action.payload;
+    },
+    addProductToCart: (state, action) => {
+      state.cart.push(action.payload);
+      state.counter += 1;
+    }
   }, 
   extraReducers: (builder) => {
     builder
@@ -59,4 +84,6 @@ export const {
   incrementCounter, 
   hideProductDetail,
   showProductDetail,
+  updateProductToShow,
+  addProductToCart
   } = productsSlice.actions;

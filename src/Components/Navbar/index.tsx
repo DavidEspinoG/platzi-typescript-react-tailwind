@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { NavLink } from "react-router-dom";
 import { useAppSelector } from "../../state/store";
+import { ShoppingBagIcon } from "@heroicons/react/20/solid";
 
 const Navbar = (): ReactElement => {
   const counter = useAppSelector((state) => state.counter);
@@ -71,8 +72,8 @@ const Navbar = (): ReactElement => {
             Others
           </NavLink>
         </li>
-        <li>
-          🛒 {counter}
+        <li className="flex gap-1">
+          <ShoppingBagIcon className="h-5 w-5 text-black-100" /> {counter}
         </li>
       </ul>
     </nav>

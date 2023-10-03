@@ -6,6 +6,7 @@ import { AppDispatch } from "../../types";
 import { Product } from "../../types";
 import { RootState } from "../../state/store";
 import Layout from "../../Components/Layout";
+import ProductDetail from "../../Components/ProductDetail";
 
 function Home() {
   const dispatch = useDispatch<AppDispatch>();
@@ -16,13 +17,15 @@ function Home() {
   }, []);
   return (
     <Layout>
-      <div className="grid gap-3 grid-cols-4 w-full max-w-screen-lg">
-        {loading && 'Cargando...'}
-        {products?.map((product : Product) => {
-          return <Card key={product.id} data={product} />
-        })}
-      </div>
-      
+      <>
+        <div className="grid gap-3 grid-cols-4 w-full max-w-screen-lg">
+          {loading && 'Cargando...'}
+          {products?.map((product : Product) => {
+            return <Card key={product.id} data={product} />
+          })}
+        </div>
+        <ProductDetail />
+      </>
     </Layout>
   )
 }

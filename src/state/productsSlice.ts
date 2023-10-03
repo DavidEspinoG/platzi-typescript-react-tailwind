@@ -71,6 +71,11 @@ const productsSlice = createSlice({
       state.isProductDetailOpen = false;
       state.isCheckoutOpen = true;
     },
+    deleteProductFromCart: (state, action) => {
+      let filteredCart = state.cart.filter((product) => product.id !== action.payload);
+      state.cart = filteredCart;
+      state.counter -= 1;
+    }
   }, 
   extraReducers: (builder) => {
     builder
@@ -97,4 +102,5 @@ export const {
   addProductToCart,
   hideCheckout,
   showCheckout,
+  deleteProductFromCart,
   } = productsSlice.actions;

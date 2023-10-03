@@ -1,6 +1,7 @@
 .product-detail {
   width: 360px;
-  height: calc(99vh - 68px);
+  min-height: 300px;
+  max-height: 70vh;
   top: 68px;
   right: 5px;
 }

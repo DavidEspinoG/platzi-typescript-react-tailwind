@@ -12,7 +12,8 @@ function Home() {
   const isCheckoutOpen = useAppSelector((state) => state.isCheckoutOpen);
   const dispatch = useAppDispatch();
   const products  = useAppSelector((state) => state.products);
-  const loading = useAppSelector((state => state.loading ))
+  const loading = useAppSelector((state => state.loading ));
+  const counter = useAppSelector((state => state.counter));
   useEffect(() => {
     dispatch(fetchProducts())
   }, []);
@@ -26,7 +27,7 @@ function Home() {
           })}
         </div>
         {isProductDetailOpen && <ProductDetail />}
-        {isCheckoutOpen && <CheckOutSideMenu />}
+        {(isCheckoutOpen && counter > 0) && <CheckOutSideMenu />}
       </>
     </Layout>
   )

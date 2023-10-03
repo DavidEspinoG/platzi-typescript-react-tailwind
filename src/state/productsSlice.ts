@@ -40,6 +40,7 @@ const initialState : InitialStateType =  {
     }, 
   },
   cart: [],
+  isCheckoutOpen: false, 
 }
 
 const productsSlice = createSlice({
@@ -53,6 +54,7 @@ const productsSlice = createSlice({
       state.isProductDetailOpen = false;
     },
     showProductDetail: (state) => {
+      state.isCheckoutOpen = false;
       state.isProductDetailOpen = true;
     },
     updateProductToShow: (state, action) => {
@@ -61,7 +63,14 @@ const productsSlice = createSlice({
     addProductToCart: (state, action) => {
       state.cart.push(action.payload);
       state.counter += 1;
-    }
+    },
+    hideCheckout: (state) => {
+      state.isCheckoutOpen = false;
+    },
+    showCheckout: (state) => {
+      state.isProductDetailOpen = false;
+      state.isCheckoutOpen = true;
+    },
   }, 
   extraReducers: (builder) => {
     builder
@@ -85,5 +94,7 @@ export const {
   hideProductDetail,
   showProductDetail,
   updateProductToShow,
-  addProductToCart
+  addProductToCart,
+  hideCheckout,
+  showCheckout,
   } = productsSlice.actions;

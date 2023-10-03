@@ -5,9 +5,11 @@ import { Product } from "../../types";
 import { useAppSelector, useAppDispatch } from "../../state/store";
 import Layout from "../../Components/Layout";
 import ProductDetail from "../../Components/ProductDetail";
+import CheckOutSideMenu from "../../Components/CheckoutSideMenu";
 
 function Home() {
   const isProductDetailOpen = useAppSelector((state) => state.isProductDetailOpen);
+  const isCheckoutOpen = useAppSelector((state) => state.isCheckoutOpen);
   const dispatch = useAppDispatch();
   const products  = useAppSelector((state) => state.products);
   const loading = useAppSelector((state => state.loading ))
@@ -24,6 +26,7 @@ function Home() {
           })}
         </div>
         {isProductDetailOpen && <ProductDetail />}
+        {isCheckoutOpen && <CheckOutSideMenu />}
       </>
     </Layout>
   )

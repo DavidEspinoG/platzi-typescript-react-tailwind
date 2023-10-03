@@ -27,4 +27,5 @@ export type InitialStateType = {
   isProductDetailOpen: boolean, 
   productToShow: Product, 
   cart: Product[],
+  isCheckoutOpen: boolean,
 }

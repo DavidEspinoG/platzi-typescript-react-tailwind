@@ -1,7 +1,8 @@
 import { ReactElement } from "react";
 import { Product as ProductType } from "../../types";
 import { useAppDispatch } from "../../state/store";
-import { showProductDetail, updateProductToShow, addProductToCart } from "../../state/productsSlice";
+import { showProductDetail, updateProductToShow, 
+  addProductToCart, showCheckout } from "../../state/productsSlice";
 
 const Card = ({data}: {data: ProductType } ): ReactElement =>{
   const dispatch = useAppDispatch();
@@ -18,7 +19,8 @@ const Card = ({data}: {data: ProductType } ): ReactElement =>{
         <div
           onClick={(e) => {
             e.stopPropagation();
-            dispatch(addProductToCart(data))
+            dispatch(addProductToCart(data));
+            dispatch(showCheckout());
           }} 
           className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full cursor-pointer">
           +

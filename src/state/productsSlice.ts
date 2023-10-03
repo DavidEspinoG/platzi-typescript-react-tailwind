@@ -25,10 +25,17 @@ const productsSlice = createSlice({
     products: [],
     message: '',
     counter: 0,
+    isProductDetailOpen: false, 
   },
   reducers: {
     incrementCounter: (state) => {
       state.counter = state.counter + 1;
+    },
+    hideProductDetail: (state) => {
+      state.isProductDetailOpen = false;
+    },
+    showProductDetail: (state) => {
+      state.isProductDetailOpen = true;
     },
   }, 
   extraReducers: (builder) => {
@@ -48,4 +55,8 @@ const productsSlice = createSlice({
 
 export default productsSlice;
 export { fetchProducts };
-export const { incrementCounter } = productsSlice.actions;
+export const { 
+  incrementCounter, 
+  hideProductDetail,
+  showProductDetail,
+  } = productsSlice.actions;

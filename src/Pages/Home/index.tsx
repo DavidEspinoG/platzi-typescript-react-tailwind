@@ -1,17 +1,16 @@
 import Card from "../../Components/Card";
-import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../state/productsSlice";
 import { useEffect } from "react";
-import { AppDispatch } from "../../types";
 import { Product } from "../../types";
-import { RootState } from "../../state/store";
+import { useAppSelector, useAppDispatch } from "../../state/store";
 import Layout from "../../Components/Layout";
 import ProductDetail from "../../Components/ProductDetail";
 
 function Home() {
-  const dispatch = useDispatch<AppDispatch>();
-  const products  = useSelector<RootState, Product[]>((state) => state.products);
-  const loading = useSelector<RootState, boolean>((state => state.loading ))
+  const isProductDetailOpen = useAppSelector((state) => state.isProductDetailOpen);
+  const dispatch = useAppDispatch();
+  const products  = useAppSelector((state) => state.products);
+  const loading = useAppSelector((state => state.loading ))
   useEffect(() => {
     dispatch(fetchProducts())
   }, []);
@@ -24,7 +23,7 @@ function Home() {
             return <Card key={product.id} data={product} />
           })}
         </div>
-        <ProductDetail />
+        {isProductDetailOpen && <ProductDetail />}
       </>
     </Layout>
   )

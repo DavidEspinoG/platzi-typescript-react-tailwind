@@ -1,5 +1,5 @@
 const apiUrls = {
-  getProducts: 'https://api.escuelajs.co/api/v1/products'
+  getProducts: 'https://fakestoreapi.com/products'
 };
 
 export {apiUrls};

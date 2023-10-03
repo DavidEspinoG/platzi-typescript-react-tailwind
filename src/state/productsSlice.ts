@@ -28,7 +28,7 @@ const initialState : InitialStateType =  {
     title: '', 
     price: 0, 
     description: '', 
-    images: [], 
+    image: '', 
     creationAt: '', 
     updatedAt: '', 
     category: {

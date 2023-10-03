@@ -20,7 +20,7 @@ function Home() {
   return (
     <Layout>
       <>
-        <div className="grid gap-3 grid-cols-4 w-full max-w-screen-lg">
+        <div className="grid grid-cols-4 w-full max-w-screen-lg gap-24">
           {loading && 'Cargando...'}
           {products?.map((product : Product) => {
             return <Card key={product.id} data={product} />

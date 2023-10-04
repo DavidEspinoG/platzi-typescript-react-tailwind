@@ -13,7 +13,7 @@ const OrderCard = ({data} : {data : Product}) : ReactElement => {
         <figure className="w-20 h-20">
           <img src={data.image} className="w-full h-full rounded-lg object-cover" alt={data.title}/>
         </figure>
-        <p className="text-sm font-light">{data.title.slice(0, 10)}</p>
+        <p className="text-sm font-light">{data.title}</p>
       </div>
         <p className="text-lg font-medium">${data.price}</p>
         <XMarkIcon 

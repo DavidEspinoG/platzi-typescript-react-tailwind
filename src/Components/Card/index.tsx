@@ -20,7 +20,7 @@ const Card = ({data}: {data: ProductType } ): ReactElement =>{
         <ConditionalButton id={data.id} data={data} />
       </figure>
       <p className='flex justify-between'>
-        <span className='text-sm font-light'>{data.title.slice(0.10)}...</span>
+        <span className='text-sm font-light'>{data.title}</span>
         <span className='text-sm font-medium'>${data.price}</span>
       </p>
     </div>

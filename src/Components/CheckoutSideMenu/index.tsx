@@ -8,7 +8,7 @@ import OrderCard from "../OrderCard";
 const CheckOutSideMenu = () : ReactElement => {
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.cart);
-
+  const total = cart.reduce((accumulator, product) => accumulator + product.price, 0);
   return (
   <aside className="checkout-side-menu flex flex-col fixed border border-black rounded-lg bg-white overflow-y-scroll">
     <div className="flex justify-between items-center p-6">
@@ -17,6 +17,9 @@ const CheckOutSideMenu = () : ReactElement => {
     </div>
     <div className="px-3">
       {cart.map((product) => <OrderCard key={product.id} data={product}/>)}
+    </div>
+    <div className="p-5 underline">
+      <h2>Total: ${total}</h2>
     </div>
   </aside>
   )
